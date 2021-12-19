@@ -1,0 +1,153 @@
+<!-- This example is from Alan Villalobos-->
+<!DOCTYPE html>
+<head>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <!-- Color Scale -->
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+ <!--  <script>
+  var subjectObject = {
+    "Count vs. Year": {
+      // "HTML": ["Links", "Images", "Tables", "Lists"],
+      // "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
+      // "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]    
+    },
+    "Avg Score vs. Year": {
+      // "PHP": ["Variables", "Strings", "Arrays"],
+      // "SQL": ["SELECT", "UPDATE", "DELETE"]
+    },
+    "Avg Review vs. Meta Score": {
+
+    }
+  }
+  window.onload = function() {
+    var subjectSel = document.getElementById("viz");
+    for (var x in subjectObject) {
+      subjectSel.options[subjectSel.options.length] = new Option(x, x);
+    }
+  }
+  </script> -->
+  <meta charset="utf-8">
+
+  <style>
+  .selected {
+    opacity: 1 !important;
+    stroke: black;
+    stroke-width: 1px;
+  }
+  input{
+    width: 40px;
+    margin-right: 20px;
+  }
+
+  .selected {
+    opacity: 1 !important;
+    stroke: black;
+    stroke-width: 1px;
+  }
+
+  </style>
+</head>
+
+  <body>
+    <h1>Welcome!</h1>
+    <h3>Visualizations for the the top video games from 2005 to 2020</h3>
+    <a href="https://www.kaggle.com/deepcontractor/top-video-games-19952021-metacritic">Our Data Source</a>
+    <br>
+    <html>With the rapid development of hardware and software, new games are emerging at an extremely fast pace. Also, the gaming platforms are iterating with a shorter time period than ever. With curiosity about the development of the most popular gaming hardware and the top games in recent years, we propose to answer the two following questions by the three interactive visualizations.</html>
+    <br><br>
+    <html>
+    Question 1: What are the best games on the most popular platforms from the year 2005 to 2020? </html>
+    <br><br>
+    <html>
+    Question 2: How well the most popular platforms are performing over the years from 2010 to 2021?</html>
+
+    <text> 
+    The scatter plot implementation helps to answer the first question, and the bar chart and line chart implementation help to answer the second question.</text>
+
+
+    <!-- <h3>Cilck Below to See Visualization</h3> -->
+    <br><br>
+    <html>Cilck to See Visualization &#9660;</html>
+
+
+
+    <!-- <a href='file:///C:\Users\Febru\Documents\CS639\final project\bar.html'>link</a> -->
+    <!-- Trial 1: ADD Button -->
+<!--     <div id="center_button">
+      <button onclick="location.href ='bar.html'">Back to Home</button>
+    </div> -->
+
+
+
+<!-- Trial 2: Drop-Down Button -->
+<!--     <form name="form1" id="form1" action="/action_page.php">
+Options: <select name="viz" id="viz">
+    <option value="" selected="selected">Select</option>
+      </select>
+      <input type="submit" value="OK">  
+    </form>
+ -->
+  <br>
+  <a href='linkhref.html' id='vis1'>Avg Score vs. Year</a>
+  <a href='linkhref.html' id='vis2'>Count vs. Year</a>
+  <a href='linkhref.html' id='vis3'>Meta Score vs. User Review</a>
+
+  <script type="text/javascript">
+
+    var Vis1 = document.getElementById('vis1');
+
+    Vis1.onclick = function(){
+
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "bar.js"; 
+        document.getElementsByTagName("head")[0].appendChild(script);
+        return false;
+
+    }
+
+    var Vis2 = document.getElementById('vis2');
+
+    Vis2.onclick = function(){
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "line.js"
+      document.getElementsByTagName("head")[0].appendChild(script);
+      return false
+    }
+
+    var Vis3 = document.getElementById('vis3');
+
+    Vis3.onclick = function(){
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "scatter.js"
+      document.getElementsByTagName("head")[0].appendChild(script);
+      return false
+    }
+
+  </script>
+
+
+<!--     <p class="text"> Choose the range for User-Review (X axis)
+    <input type="number" id="buttonXlim" value=9>
+
+    Choose the range for Meta-score (Y-axis)
+    <input type="number" id="buttonYlim" value=95>
+
+    Choose the size for the dots: from 2 to 5
+    <input type="range" name="circleSize" id=circleSize min="2" max="5" value="3"></p>
+ -->
+
+
+    <div id="my_dataviz"></div>
+
+    <script>
+      var svg = d3.select("#my_dataviz")
+                .append("svg")
+
+    </script>
+
+  </body>
+
+</html>
