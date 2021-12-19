@@ -98,7 +98,7 @@ var Height = 600;
 
   var mousemove = function(d) {
     tooltip
-      .html("The exact value of<br>the Ground Living area is: " + d.summary)
+      .html("Game Summary: " + d.summary)
       .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (d3.mouse(this)[1]) + "px")
   }
@@ -126,11 +126,11 @@ var Height = 600;
       .on("mousemove", mousemove )
       .on("mouseleave", mouseleave )
 
-    svg
-    .call( d3.brush()                 // Add the brush feature using the d3.brush function
-      .extent( [ [0,0], [width,height] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
-      .on("start brush", updateChart_b) // Each time the brush selection changes, trigger the 'updateChart' function
-    )
+    // svg
+    // .call( d3.brush()                 // Add the brush feature using the d3.brush function
+    //   .extent( [ [0,0], [width,height] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
+    //   .on("start brush", updateChart_b) // Each time the brush selection changes, trigger the 'updateChart' function
+    // )
 
     var my_legend = d3.select("#my_legend")
     // Handmade legend
@@ -141,18 +141,18 @@ var Height = 600;
     my_legend.append("text").attr("x", 120).attr("y", 80).text("Xbox 360").style("font-size", "15px").attr("alignment-baseline","middle")
     my_legend.append("text").attr("x", 120).attr("y", 110).text("PlayStation 4").style("font-size", "15px").attr("alignment-baseline","middle")
   
-    function updateChart_b() {
-    extent = d3.event.selection
-    svg.selectAll("circle").classed("selected", function(d){ return isBrushed(extent, x(d.user_review), y(d.meta_score) ) } )
-  }
+  //   function updateChart_b() {
+  //   extent = d3.event.selection
+  //   svg.selectAll("circle").classed("selected", function(d){ return isBrushed(extent, x(d.user_review), y(d.meta_score) ) } )
+  // }
 
-  function isBrushed(brush_coords, cx, cy) {
-       var x0 = brush_coords[0][0],
-           x1 = brush_coords[1][0],
-           y0 = brush_coords[0][1],
-           y1 = brush_coords[1][1];
-      return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;    // This return TRUE or FALSE depending on if the points is in the selected area
-  }
+  // function isBrushed(brush_coords, cx, cy) {
+  //      var x0 = brush_coords[0][0],
+  //          x1 = brush_coords[1][0],
+  //          y0 = brush_coords[0][1],
+  //          y1 = brush_coords[1][1];
+  //     return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;    // This return TRUE or FALSE depending on if the points is in the selected area
+  // }
 
     // Listen to the slider?
     d3.select("#circleSize").on("change", function(d){
